@@ -10,7 +10,6 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-
 	<!--
 	- The ContentNegotiatingViewResolver delegates to the InternalResourceViewResolver and BeanNameViewResolver,
 	- and uses the requested media type (determined by the path extension) to pick a matching view. 
@@ -26,17 +25,48 @@
 		<property name="favorPathExtension" value="true"/>		
 		<property name="ignoreAcceptHeader" value="true"/>
 	</bean>
-
+	
+	<!-- 
+        - [THYMELEAF] We replace the org.springframework.web.servlet.view.InternalResourceViewResolver 
+        - view resolver with thymeleaf view resolver 
+    -->
 	<!-- Default viewClass: JSTL view (JSP with html output) -->
+	<!-- Example: a logical view name of 'vets' is mapped to '/WEB-INF/jsp/vets.jsp' -->
+	<!-- 
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<!-- Example: a logical view name of 'vets' is mapped to '/WEB-INF/jsp/vets.jsp' -->
+		
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	
+	 -->
+	 
 	<!-- Used here for 'xml' and 'atom' views  -->
 	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" />
 
+    <bean id="templateResolver" 
+        class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+        <property name="prefix" value="/WEB-INF/thymeleaf/" />
+        <property name="suffix" value=".html" />
+        <property name="templateMode" value="HTML5" />
+        <property name="order" value="2" />
+        <!-- Template cache is set to false (default is true).        -->
+        <property name="cacheable" value="false" />
+    </bean>
+
+    <bean id="templateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine">
+          <property name="templateResolver" ref="templateResolver" />
+          <!-- These lines configure the dialects to use with Thymeleaf -->
+		  <property name="dialects">
+		    <set>
+		      <bean class="org.thymeleaf.spring3.dialect.SpringStandardDialect"/>
+		      <bean class="nz.net.ultraq.web.thymeleaf.LayoutDialect"/>
+		    </set>
+		  </property>
+    </bean>
+    <bean class="org.thymeleaf.spring3.view.ThymeleafViewResolver">
+        <property name="templateEngine" ref="templateEngine" />
+    </bean> 
+    
 	<!-- Renders an Atom feed of the visits. Used by the BeanNameViewResolver  -->	 
 	<bean id="visitList" class="org.springframework.samples.petclinic.web.VisitsAtomView"/>
 

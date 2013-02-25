@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html 
+	xmlns:th="http://www.thymeleaf.org" 
+	xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" 
+	lang="en"	>
+
+<!-- 
+    - [THYMELEAF] This file replaces files header.jsp and footer.jsp
+    - DOCTYPE, head and body added as this file was just a fragment of HTML and not a valid 
+      HTML file in the original Spring MVC petclinic application
+-->
+    <head th:include="fragments/headTag::header" th:remove="tag"></head>
+
+    <body>        	
+        <div class="container">
+        	<div th:include="fragments/bodyHeader::bodyHeader" th:remove="tag"></div>
+			<p layout:fragment="page-title">
+				<h2>Page Title</h2>
+			</p>			
+        	<div layout:fragment="page-content">
+            	<p>The page content should be here</p>
+    		</div>    		
+            <table th:substituteby="fragments/footer::footer"></table>            
+        </div>
+    </body>
+    
+</html>
+

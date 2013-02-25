@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html 	xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:th="http://www.thymeleaf.org"
+  		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+  		layout:decorator="fragments/layout"	>
+  
+  <body>	
+  		<script>
+			$(function() {
+				$("#birthDate").datepicker({ dateFormat: 'yy/mm/dd'});
+			});
+		</script>
+  		<p layout:fragment="page-title">
+  			<h2 th:text="${pet.new} ? 'New Pet' : 'Pet'">Pet</h2>
+  		</p>
+        <div layout:fragment="page-content">     					
+            <form th:object="${pet}" th:method="${pet.new} ? 'post' : 'put'" 
+                th:action="@{#}" action="../owners/ownerDetails.html"
+                class="form-horizontal"	>
+                <div class="control-group" id="owner">
+					<label class="control-label">Owner </label>					
+					<div class="controls">
+						<span th:remove="tag" th:text="${pet.owner.firstName + ' ' + pet.owner.lastName}"></span>
+					</div>
+				</div>
+				<div th:class="${#fields.hasErrors('name')} ? 'control-group error' : 'control-group'">
+					<label class="control-label">Name</label>
+					<div class="controls">
+						<input type="text" th:field="*{name}" size="30" maxlength="30" /> 
+						<span th:errors="*{name}" class="help-inline" th:if="${#fields.hasErrors('name')}">error</span>
+					</div>
+				</div>
+				<div th:class="${#fields.hasErrors('birthDate')} ? 'control-group error' : 'control-group'">
+					<label class="control-label">Birth Date</label>
+					<div class="controls">
+						<input type="date" th:field="*{birthDate}" placeholder="yyyy-mm-dd"/>  
+						<span th:errors="*{birthDate}" class="help-inline" th:if="${#fields.hasErrors('birthDate')}">error</span>
+					</div>
+				</div>
+				<div th:class="${#fields.hasErrors('type')} ? 'control-group error' : 'control-group'">
+					<label class="control-label">Type </label>
+					<div class="controls">
+						<select th:field="*{type}">
+	                    	<option th:each="t : ${types}" th:text="${t}" th:value="${t}" >option</option>
+	                    </select>
+	                    <span th:errors="*{type}" class="errors" th:if="${#fields.hasErrors('type')}">error</span>
+                    </div>
+				</div>
+				<div class="form-actions">
+					<p class="submit" th:if="${pet.new}"><button type="submit">Add Pet</button></p>
+                    <p class="submit" th:unless="${pet.new}"><button type="submit">Update Pet</button></p>
+				</div>
+			</form>
+		</div>
+	</body>
+</html>
