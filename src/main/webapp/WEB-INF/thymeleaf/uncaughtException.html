@@ -14,7 +14,7 @@
   		</p>
         <div layout:fragment="page-content">     		
 			<img th:src="@{/resources/images/pets.png}" /> 
-			<p>${exception.message}</p>           
+			<p th:text="${exception.message}">Exception Message</p>           
         </div>
                 
     </body>
