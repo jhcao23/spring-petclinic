@@ -1,6 +1,16 @@
 ==========================================================================
-=== Spring PetClinic Sample Application
+=== Spring PetClinic Sample Application with Thymeleaf view layer
 ==========================================================================
+
+
+ To learn more and download latest version:
+ 
+     http://www.thymeleaf.org
+     
+ To learn the source code from github:
+ 	https://github.com/thymeleaf/thymeleafexamples-petclinic
+ 	https://github.com/SpringSource/spring-petclinic 	
+
 
 @author Ken Krebs
 @author Juergen Hoeller
@@ -8,6 +18,9 @@
 @author Costin Leau
 @author Sam Brannen
 @author Scott Andrews
+
+@author Soraya Sanchez (Thymeleaf view layer)
+@author John Cao (Merged latest spring-petclinic and thymeleafexamples-petclinic together)
 
 ==========================================================================
 === Data Access Strategies

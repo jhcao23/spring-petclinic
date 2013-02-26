@@ -2,7 +2,7 @@
  Building
  --------
  
- To build this project you will need Maven 3. You can get it at:
+ To build this project you will need Maven 2. You can get it at:
  
      http://maven.apache.org
 
@@ -17,10 +17,11 @@
  Run in a tomcat server:
  
      mvn tomcat:run
-
+     
  Once started, the application should be available at:
  
      http://localhost:8080/petclinic
+
 
 
  
