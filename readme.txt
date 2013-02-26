@@ -1,5 +1,5 @@
 ==========================================================================
-=== Spring PetClinic Sample Application with Thymeleaf view layer
+=== Spring PetClinic Sample Application with Thymeleaf view layer + Twitter Bootstrap
 ==========================================================================
 
 
@@ -7,7 +7,7 @@
  
      http://www.thymeleaf.org
      
- To learn the source code from github:
+ To learn the original source code from github:
  	https://github.com/thymeleaf/thymeleafexamples-petclinic
  	https://github.com/SpringSource/spring-petclinic 	
 
