@@ -4,12 +4,15 @@
   		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
   		layout:decorator="fragments/layout"	>
   
-  <body>	
+  <body>	  		
   		<p layout:fragment="page-title">
   			<h2 th:utext="#{welcome}">Welcome2</h2>
   		</p>
         <div layout:fragment="page-content">     		
 			<img th:src="@{/resources/images/pets.png}" />            
         </div>
+        <div layout:include="tags/Modal2 :: modal" th:with="modalId='message', modalHeader='Message'" th:remove="tag">
+		    <p th:fragment="modal-content">Message goes here!</p>
+		</div>
   </body>      
 </html>

@@ -4,19 +4,14 @@
 		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout" 
 		lang="en"	>
 	
-	<body th:fragment="inputDiv">
-			<div id="aaa">
-				<div layout:fragment="modal-content">
-					<p>hahah</p>
-				</div>
+	<body th:fragment="inputDiv">			
+		<div th:class="${#fields.hasErrors(fieldName)} ? 'control-group error' : 'control-group'">
+			<label class="control-label" th:text="${label}">Label</label>
+			<div class="controls">
+				<input th:type="${fieldType}" th:field="*{field}" th:placeholder="${placeholder==null}?'':${placeholder}"/>  
+				<span th:errors="*{field}" class="help-inline" th:if="${#fields.hasErrors(fieldName)}">error</span>
 			</div>
-<!-- 		<div th:class="${#fields.hasErrors(fieldName)} ? 'control-group error' : 'control-group'"> -->
-<!-- 			<label class="control-label" th:text="${label}">Label</label> -->
-<!-- 			<div class="controls"> -->
-<!-- 				<input th:type="${fieldType}" th:field="*{field}" th:placeholder="${placeholder==null}?'':${placeholder}"/>   -->
-<!-- 				<span th:errors="*{field}" class="help-inline" th:if="${#fields.hasErrors(fieldName)}">error</span> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
+		</div>
 	</body>
 
 </html>
