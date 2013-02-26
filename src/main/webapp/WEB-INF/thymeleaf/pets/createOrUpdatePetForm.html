@@ -4,12 +4,7 @@
   		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
   		layout:decorator="fragments/layout"	>
   
-  <body>	
-  		<script>
-			$(function() {
-				$("#birthDate").datepicker({ dateFormat: 'yy/mm/dd'});
-			});
-		</script>
+  <body>		
   		<p layout:fragment="page-title">
   			<h2 th:text="${pet.new} ? 'New Pet' : 'Pet'">Pet</h2>
   		</p>
