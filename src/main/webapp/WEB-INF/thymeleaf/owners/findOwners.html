@@ -11,11 +11,12 @@
         <div layout:fragment="page-content">     		
 			<form th:action="@{/owners}" action="owners.html" th:object="${owner}" method="get" class="form-horizontal" id="search-owner-form">
               	<fieldset>
-					<div class="control-group" id="lastName">
-						<label class="control-label">Last name </label>
-						<input type="text" th:field="*{lastName}" size="30" maxlength="80" />
-						<span th:errors="*{lastName}" class="help-inline">name is required!</span>
-					</div>				
+              		<div layout:include="tags/inputField::inputDiv" th:remove="tag" 
+						th:with="label='Last name', fieldName='lastName', id='lastNameDiv'" >
+						<input layout:fragment="input" th:remove="tag">
+							<input type="text" th:field="*{lastName}" size="30" maxlength="80" />
+						</input>				   
+					</div> 
 					<div class="form-actions">
 						<button type="submit">Find Owner</button>
 					</div>

@@ -29,25 +29,22 @@
                    </tbody>
              </table>    		
 			<form action="#" th:object="${visit}" th:action="@{#}" method="post">
-				<div class="control-group">
-					<label class="control-label">Date </label>
-					<div class="controls">
-						<input type="text" th:field="*{date}" size="10" maxlength="10" placeholder="yyyy-mm-dd"/>						
-						<span th:if="${#fields.hasErrors('date')}" th:errors="*{date}" class="help-inline">error</span>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">Description </label>
-					<div class="controls">
-						<textarea th:field="*{description}" rows="10" cols="25"></textarea>						
-						<span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="help-inline">error</span>
-					</div>
-				</div>
+				<div layout:include="tags/inputField::inputDiv" th:remove="tag" 
+					th:with="label='Date', fieldName='date'" >
+					<input layout:fragment="input" th:remove="tag">
+						<input type="text" th:field="*{date}" size="10" maxlength="10" placeholder="yyyy-mm-dd"/>
+					</input>				   
+				</div> 
+				<div layout:include="tags/inputField::inputDiv" th:remove="tag" 
+					th:with="label='Description', fieldName='description'" >
+					<input layout:fragment="input" th:remove="tag">
+						<textarea th:field="*{description}" rows="10" cols="25"/>
+					</input>				   
+				</div> 
 				<div class="form-actions">
 					<input type="hidden" name="petId" th:value="${visit.pet.id}" />
 					<button type="submit">Add Visit</button>
-				</div>
-				
+				</div>				
             </form>
         
             <br />

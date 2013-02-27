@@ -12,40 +12,35 @@
 			<form th:object="${owner}" action="show.html"
                 th:action="@{#}" th:method="${owner.new} ? 'post' : 'put'" 
                 class="form-horizontal" id="add-owner-form">
-                <div th:class="${#fields.hasErrors('firstName')} ? 'control-group error' : 'control-group'">
-					<label class="control-label">First Name</label>
-					<div class="controls">
-						<input type="text" th:field="*{firstName}" size="30" maxlength="80" /> 
-						<span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="errors"></span>
-					</div>
+                <div layout:include="tags/inputField::inputDiv" th:remove="tag" 
+					th:with="label='First Name', fieldName='firstName'" >
+					<input layout:fragment="input" th:remove="tag">
+						<input type="text" th:field="*{firstName}" size="30" maxlength="30" />
+					</input>				   
 				</div>
-				<div th:class="${#fields.hasErrors('lastName')} ? 'control-group error' : 'control-group'">
-					<label class="control-label">Last Name</label>
-					<div class="controls">
+				<div layout:include="tags/inputField::inputDiv" th:remove="tag" 
+					th:with="label='Last Name', fieldName='lastName'" >
+					<input layout:fragment="input" th:remove="tag">
 						<input type="text" th:field="*{lastName}" size="30" maxlength="80" />
-						<span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="errors">error</span>
-					</div>
-				</div>
-				<div th:class="${#fields.hasErrors('address')} ? 'control-group error' : 'control-group'">
-					<label class="control-label">Address</label>
-					<div class="controls">
+					</input>				   
+				</div> 
+				<div layout:include="tags/inputField::inputDiv" th:remove="tag" 
+					th:with="label='Address', fieldName='address'" >
+					<input layout:fragment="input" th:remove="tag">
 						<input type="text" th:field="*{address}" size="30" maxlength="80" />
-						<span th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="errors">error</span>
-					</div>
+					</input>				   
 				</div>
-				<div th:class="${#fields.hasErrors('city')} ? 'control-group error' : 'control-group'">
-					<label class="control-label">City</label>
-					<div class="controls">
+				<div layout:include="tags/inputField::inputDiv" th:remove="tag" 
+					th:with="label='City', fieldName='city'" >
+					<input layout:fragment="input" th:remove="tag">
 						<input type="text" th:field="*{city}" size="30" maxlength="80" />
-						<span th:if="${#fields.hasErrors('city')}" th:errors="*{city}" class="errors">error</span>
-					</div>
+					</input>				   
 				</div>
-				<div th:class="${#fields.hasErrors('telephone')} ? 'control-group error' : 'control-group'">
-					<label class="control-label">Telephone</label>
-					<div class="controls">
+				<div layout:include="tags/inputField::inputDiv" th:remove="tag" 
+					th:with="label='Telephone', fieldName='telephone'" >
+					<input layout:fragment="input" th:remove="tag">
 						<input type="tel" th:field="*{telephone}" size="20" maxlength="20" pattern="[0-9]*" />
-						<span th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}" class="errors">error</span>
-					</div>
+					</input>				   
 				</div>
               	<div class="form-actions">
               		<p th:if="${owner.new}" class="submit"><button type="submit">Add Owner</button></p>
