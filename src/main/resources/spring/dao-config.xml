@@ -11,14 +11,17 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- ========================= RESOURCE DEFINITIONS ========================= -->
-
+	
 	<!-- import the dataSource definition -->
 	<import resource="datasource-config.xml"/> 
-
+	<import resource="mongo-config.xml"/> 
 
 	<!-- Configurer that replaces ${...} placeholders with values from a properties file -->
-	<!-- (in this case, JDBC-related settings for the JPA EntityManager definition below) -->
-	<context:property-placeholder location="classpath:spring/jdbc.properties"/>
+	<!-- (in this case, JPA-related settings for the JPA EntityManager definition below) -->
+	<context:property-placeholder
+		location="classpath:spring/jpa.properties" 
+		ignore-unresolvable="false" />
+
 
 	<!-- ========================= BUSINESS OBJECT DEFINITIONS ========================= -->
 
