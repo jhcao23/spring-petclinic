@@ -43,8 +43,8 @@
 					</input>				   
 				</div>
               	<div class="form-actions">
-              		<p th:if="${owner.new}" class="submit"><button type="submit">Add Owner</button></p>
-                	<p th:unless="${owner.new}" class="submit"><button type="submit">Update Owner</button></p>
+              		<p th:if="${owner.new}" class="submit"><button type="submit" class="btn" data-loading-text="Adding Owner ...">Add Owner</button></p>
+                	<p th:unless="${owner.new}" class="submit"><button type="submit" class="btn" data-loading-text="Updating ...">Update Owner</button></p>
               	</div>
             </form>            
         </div>

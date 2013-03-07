@@ -43,13 +43,13 @@
 				</div> 
 				<div class="form-actions">
 					<input type="hidden" name="petId" th:value="${visit.pet.id}" />
-					<button type="submit">Add Visit</button>
+					<button type="submit" class="btn" data-loading-text="Adding Visit...">Add Visit</button>
 				</div>				
             </form>
         
             <br />
             <b>Previous Visits:</b>
-            <table style="width: 333px;">
+            <table>
                 <tr>
                     <th>Date</th>
                     <th>Description</th>

@@ -9,7 +9,7 @@
   			<h2>Owner Information</h2>
   		</p>
         <div layout:fragment="page-content">     		
-			<table th:object="${owner}" class="table table-striped"  style="width:600px;">
+			<table th:object="${owner}" class="table table-striped">
                 <tr>
                     <th>Name</th>
                     <td><b th:text="${owner.firstName + owner.lastName}">John Smith</b></td>
@@ -40,7 +40,7 @@
             
             <h2>Pets and Visits</h2>
             <div th:each="pet : ${owner.pets}" th:remove="tag">
-                <table class="table" style="width:600px;">
+                <table class="table">
                     <tr>
                         <td valign="top" style="width: 120px;">
                             <dl class="dl-horizontal">

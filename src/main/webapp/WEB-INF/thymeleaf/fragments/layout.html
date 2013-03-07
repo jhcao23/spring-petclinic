@@ -11,13 +11,14 @@
 -->
     <head th:include="fragments/headTag::header" th:remove="tag"></head>
 
-    <body data-target=".bs-docs-sidebar" data-spy="scroll" data-twttr-rendered="true"> 
+    <body> 
+		
 		<div th:include="fragments/bodyHeader::bodyHeader" th:remove="tag"></div>
 			    	       	
         <div class="container">
         	<div class="row">
         		<div class="span12">
-        			<div class="page-title">
+        			<div class="page-title container">
 			        	<p layout:fragment="page-title">
 							<h2>Page Title</h2>
 						</p>			

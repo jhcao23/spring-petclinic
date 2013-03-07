@@ -39,8 +39,8 @@
 					</input>				   
 				</div> 	
 				<div class="form-actions">
-					<p class="submit" th:if="${pet.new}"><button type="submit">Add Pet</button></p>
-                    <p class="submit" th:unless="${pet.new}"><button type="submit">Update Pet</button></p>
+					<p class="submit" th:if="${pet.new}"><button type="submit" class="btn" data-loading-text="Adding Pet ...">Add Pet</button></p>
+                    <p class="submit" th:unless="${pet.new}"><button type="submit" class="btn" data-loading-text="Updaing Pet ...">Update Pet</button></p>
 				</div>
 			</form>
 		</div>
