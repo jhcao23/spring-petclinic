@@ -57,7 +57,7 @@ import com.sun.syndication.feed.atom.Feed;
 @WebAppConfiguration
 // Spring configuration files that are inside WEB-INF folder can be referenced here because they've been 
 // added to the classpath inside the Maven pom.xml file (inside <build> <testResources> ... </testResources> </build>)
-@ContextConfiguration({"classpath*:mvc-*-config.xml", "classpath*:spring/*-config.xml"})
+@ContextConfiguration({"classpath*:business-config.xml"})
 @ActiveProfiles("jdbc")
 public class VisitsAtomViewTest {
 
