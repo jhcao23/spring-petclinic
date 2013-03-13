@@ -14,13 +14,12 @@
 	
 	<!-- import the dataSource definition -->
 	<import resource="datasource-config.xml"/> 
-	<import resource="mongo-config.xml"/> 
-
+            
 	<!-- Configurer that replaces ${...} placeholders with values from a properties file -->
 	<!-- (in this case, JPA-related settings for the JPA EntityManager definition below) -->
 	<context:property-placeholder
 		location="classpath:spring/jpa.properties" 
-		ignore-unresolvable="false" />
+		ignore-unresolvable="true" />
 
 
 	<!-- ========================= BUSINESS OBJECT DEFINITIONS ========================= -->
@@ -50,14 +49,12 @@
 						p:database="${jpa.database}" p:showSql="${jpa.showSql}" />			
 			</property>
 			<property name="persistenceUnitName" value="petclinic" />
-			<property name="packagesToScan" value="org/springframework/samples/petclinic" />
+			<property name="packagesToScan" value="org.springframework.samples.petclinic" />
 		</bean>
 			
 		<!-- Transaction manager for a single JPA EntityManagerFactory (alternative to JTA) -->
 		<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager"
 				p:entityManagerFactory-ref="entityManagerFactory"/>
-	
-	
 	
 		<!--
 			Post-processor to perform exception translation on @Repository classes (from native

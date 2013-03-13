@@ -38,7 +38,6 @@ public class JpaOwnerRepositoryImpl implements OwnerRepository {
 	@PersistenceContext
 	private EntityManager em;
 	
-
 	@SuppressWarnings("unchecked")
 	public Collection<Owner> findByLastName(String lastName) {
 		// using 'join fetch' because a single query should load both owners and pets
@@ -55,7 +54,6 @@ public class JpaOwnerRepositoryImpl implements OwnerRepository {
 		query.setParameter("id", id);
 		return  (Owner) query.getSingleResult();
 	}
-
 
 	public void save(Owner owner) {
 		this.em.merge(owner);

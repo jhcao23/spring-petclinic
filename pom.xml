@@ -12,9 +12,11 @@
 		<thymeleaf.version>2.0.16</thymeleaf.version>
 		<thymeleaf.layout.dialect.version>1.0.6</thymeleaf.layout.dialect.version>
 		<spring.version>3.2.1.RELEASE</spring.version>
-		<slf4j.version>1.7.0</slf4j.version>
+		<spring.data.mongo.version>1.2.0.RELEASE</spring.data.mongo.version>
+		<slf4j.version>1.7.2</slf4j.version>
 		<log4j.version>1.2.17</log4j.version>
 		<hibernate.version>4.1.4.Final</hibernate.version>
+		<querydsl.version>2.9.0</querydsl.version>
 		<aspectj.version>1.7.1</aspectj.version>
 		<hibernate.validator.version>4.2.0.Final</hibernate.validator.version>
 		<joda.version>2.1</joda.version>
@@ -92,22 +94,22 @@
 	      <groupId>org.slf4j</groupId>
 	      <artifactId>slf4j-api</artifactId>
 	      <version>${slf4j.version}</version>
-	      <scope>runtime</scope>
+<!-- 	      <scope>runtime</scope> -->
 	   </dependency>
 	   
 	   <dependency>
 	      <groupId>org.slf4j</groupId>
 	      <artifactId>slf4j-log4j12</artifactId>
 	      <version>${slf4j.version}</version>
-	      <scope>runtime</scope>
+<!-- 	      <scope>runtime</scope> -->
 	   </dependency>
 	   
-	   <dependency>
-	      <groupId>log4j</groupId>
-	      <artifactId>log4j</artifactId>
-	      <version>${log4j.version}</version>
-	      <scope>runtime</scope>
-	   </dependency>
+<!-- 	   <dependency> -->
+<!-- 	      <groupId>log4j</groupId> -->
+<!-- 	      <artifactId>log4j</artifactId> -->
+<!-- 	      <version>${log4j.version}</version> -->
+<!-- 	      <scope>runtime</scope> -->
+<!-- 	   </dependency> -->
 
 		<!-- DataSource -->
 		<dependency>
@@ -157,7 +159,7 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>${hibernate.validator.version}</version>
-		</dependency>
+		</dependency>		
 		
 		<!-- ********************************************************************** 
 			 ** 				SPRING DATA			 							 ** 
@@ -171,7 +173,30 @@
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb</artifactId>
-			<version>1.2.0.RELEASE</version>
+			<version>${spring.data.mongo.version}</version>
+		</dependency>
+<!-- 		<dependency> -->
+<!-- 	      <groupId>org.springframework.data</groupId> -->
+<!-- 	      <artifactId>spring-data-mongodb-cross-store</artifactId> -->
+<!-- 	      <version>${spring.data.mongo.version}</version> -->
+<!-- 	    </dependency> -->
+	    
+	    <!-- QueryDSL -->
+		<dependency>
+		  <groupId>com.mysema.querydsl</groupId>
+		  <artifactId>querydsl-apt</artifactId>
+		  <version>${querydsl.version}</version>
+		  <scope>provided</scope>
+		</dependency>    
+		<dependency>
+		  <groupId>com.mysema.querydsl</groupId>
+		  <artifactId>querydsl-jpa</artifactId>
+		  <version>${querydsl.version}</version>
+		</dependency>
+		<dependency>
+		  <groupId>com.mysema.querydsl</groupId>
+		  <artifactId>querydsl-mongodb</artifactId>
+		  <version>${querydsl.version}</version>
 		</dependency>
 
 		<!-- Servlet -->
@@ -327,6 +352,25 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+		      <groupId>com.mysema.maven</groupId>
+		      <artifactId>apt-maven-plugin</artifactId>
+		      <version>1.0.8</version>
+		      <executions>
+			        <execution>
+				          <goals>
+				            <goal>process</goal>
+				          </goals>
+				          <configuration>
+				            <outputDirectory>target/generated-sources/java</outputDirectory>
+				            <processors>
+					            <processor>com.mysema.query.apt.jpa.JPAAnnotationProcessor</processor>
+					            <processor>com.mysema.query.mongodb.morphia.MorphiaAnnotationProcessor</processor>
+				            </processors>		            
+				          </configuration>
+			        </execution>
+		      </executions>
+		    </plugin>
 		</plugins>
 		<testResources>
             <testResource>
