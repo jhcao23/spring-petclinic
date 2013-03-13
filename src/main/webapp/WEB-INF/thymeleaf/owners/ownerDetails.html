@@ -30,10 +30,10 @@
             <table class="table-buttons">
                 <tr>
                     <td colspan="2" align="center">
-                        <a th:href="@{'/owners/' + ${owner.id} + '/edit'}" href="form.html">Edit Owner</a>
+                        <a th:href="@{'/owners/' + ${owner.id} + '/edit'}" class="btn btn-info">Edit Owner</a>
                     </td>
                     <td>
-                        <a th:href="@{'/owners/' + ${owner.id} + '/pets/new'}" href="../pets/form.html">Add New Pet</a>
+                        <a th:href="@{'/owners/' + ${owner.id} + '/pets/new'}" class="btn btn-success">Add New Pet</a>
                     </td>
                 </tr>
             </table>

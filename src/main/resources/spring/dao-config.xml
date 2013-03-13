@@ -38,7 +38,7 @@
 		
 		for mode="aspectj"/ see SPR-6392
 	-->
-	<tx:annotation-driven/>
+<!-- 	<tx:annotation-driven/> -->
 
 	<beans profile="jpa,spring-data-jpa">
 		<!-- JPA EntityManagerFactory -->

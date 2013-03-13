@@ -13,9 +13,9 @@
 	<import resource="mvc-view-config.xml"/>
 	
 	<!--
-		- POJOs labeled with the @Controller and @Service annotations are auto-detected.
+		- POJOs labeled with the @Controller annotations are auto-detected.
 	-->
-	<context:component-scan base-package="org.springframework.samples.petclinic.web, org.springframework.samples.petclinic.service"/>
+	<context:component-scan base-package="org.springframework.samples.petclinic.web"/>
 	
 	<mvc:annotation-driven conversion-service="conversionService" />
 	
