@@ -12,7 +12,7 @@
 			<table th:object="${owner}" class="table table-striped">
                 <tr>
                     <th>Name</th>
-                    <td><b th:text="${owner.firstName + owner.lastName}">John Smith</b></td>
+                    <td><b th:text="${owner.firstName + ' ' + owner.lastName}">John Smith</b></td>
                 </tr>
                 <tr>
                     <th>Address</th>
@@ -26,10 +26,8 @@
                     <th>Telephone </th>
                     <td th:text="${owner.telephone}">555-555-555</td>
                 </tr>
-            </table>
-            <table class="table-buttons">
                 <tr>
-                    <td colspan="2" align="center">
+                    <td>
                         <a th:href="@{'/owners/' + ${owner.id} + '/edit'}" class="btn btn-info">Edit Owner</a>
                     </td>
                     <td>
@@ -37,6 +35,16 @@
                     </td>
                 </tr>
             </table>
+<!--             <table class="table-buttons"> -->
+<!--                 <tr> -->
+<!--                     <td colspan="2" align="center"> -->
+<!--                         <a th:href="@{'/owners/' + ${owner.id} + '/edit'}" class="btn btn-info">Edit Owner</a> -->
+<!--                     </td> -->
+<!--                     <td> -->
+<!--                         <a th:href="@{'/owners/' + ${owner.id} + '/pets/new'}" class="btn btn-success">Add New Pet</a> -->
+<!--                     </td> -->
+<!--                 </tr> -->
+<!--             </table> -->
             
             <h2>Pets and Visits</h2>
             <div th:each="pet : ${owner.pets}" th:remove="tag">
