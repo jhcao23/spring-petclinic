@@ -16,22 +16,18 @@
 package org.springframework.samples.petclinic.service;
 
 import java.util.Collection;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
-import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.model.Pet;
 import org.springframework.samples.petclinic.model.PetType;
 import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
-import org.springframework.samples.petclinic.model.mongo.EventLog;
 import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.samples.petclinic.repository.PetRepository;
 import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.samples.petclinic.repository.VisitRepository;
-import org.springframework.samples.petclinic.repository.mongo.EventLogRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -47,18 +43,13 @@ public class ClinicServiceImpl implements ClinicService {
 	private VetRepository vetRepository;
 	private OwnerRepository ownerRepository;	
 	private VisitRepository visitRepository;
-	private EventLogRepository eventLogRepository;
 
 	@Autowired
-	private MongoOperations mongoTemplate;
-	
-	@Autowired
-	public ClinicServiceImpl(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository, VisitRepository visitRepository, EventLogRepository eventLogRepository) {
+	public ClinicServiceImpl(PetRepository petRepository, VetRepository vetRepository, OwnerRepository ownerRepository, VisitRepository visitRepository) {
 		this.petRepository = petRepository;
 		this.vetRepository = vetRepository;
 		this.ownerRepository = ownerRepository;
 		this.visitRepository = visitRepository;
-		this.eventLogRepository = eventLogRepository;
 	}
 
 	@Transactional(readOnly=true)
@@ -78,7 +69,6 @@ public class ClinicServiceImpl implements ClinicService {
 
 	@Transactional
 	public void saveOwner(Owner owner) throws DataAccessException {
-		eventLogRepository.save(new EventLog("saveOwner", null, new Date()));
 		ownerRepository.save(owner);
 	}
 		

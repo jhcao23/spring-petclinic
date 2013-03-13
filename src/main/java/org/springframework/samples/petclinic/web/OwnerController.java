@@ -19,8 +19,6 @@ import java.util.Collection;
 
 import javax.validation.Valid;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.samples.petclinic.model.Owner;
 import org.springframework.samples.petclinic.service.ClinicService;
@@ -47,9 +45,7 @@ import org.springframework.web.servlet.ModelAndView;
 @SessionAttributes(types = Owner.class)
 public class OwnerController {
 
-	private Logger log = LoggerFactory.getLogger(OwnerController.class);
 	private final ClinicService clinicService;
-
 
 	@Autowired
 	public OwnerController(ClinicService clinicService) {
@@ -126,7 +122,6 @@ public class OwnerController {
 			return "owners/createOrUpdateOwnerForm";
 		}
 		else {
-			log.info("trying to update owner");
 			this.clinicService.saveOwner(owner);
 			status.setComplete();
 			return "redirect:/owners/{ownerId}";
