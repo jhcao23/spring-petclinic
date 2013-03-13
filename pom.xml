@@ -316,6 +316,7 @@
 				<configuration>
 					<includes>
 						<include>**/*Tests.java</include>
+						<include>**/VisitsAtomViewTest.java</include>
 					</includes>
 				</configuration>
 			</plugin>
