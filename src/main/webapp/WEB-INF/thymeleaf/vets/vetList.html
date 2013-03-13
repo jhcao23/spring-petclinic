@@ -31,7 +31,10 @@
             <table class="table-buttons">
                 <tr>
                     <td>
-                        <a th:href="@{'/vets.xml'}" href="#">View as XML</a>
+                        <a th:href="@{'/vets.xml'}" class="btn btn-info">View as XML</a>
+                    </td>
+                    <td>
+                    	<a th:href="@{'/vets.atom'}" class="btn btn-success">Subscribe to Atom feed</a>
                     </td>
                 </tr>
             </table>            
