@@ -543,18 +543,20 @@
 		      <version>1.0.8</version>
 		      <executions>
 			        <execution>
-				          <goals>
-				            <goal>process</goal>
-				          </goals>
-				          <configuration>
+			        	<phase>generate-sources</phase>
+				        <goals>
+				        	<goal>process</goal>
+				        </goals>				          
+				        <configuration>
 				            <outputDirectory>target/generated-sources/java</outputDirectory>
 				            <processors>
 					            <processor>com.mysema.query.apt.jpa.JPAAnnotationProcessor</processor>
-					            <processor>com.mysema.query.mongodb.morphia.MorphiaAnnotationProcessor</processor>
-				            </processors>		            
-				          </configuration>
-			        </execution>
-		      </executions>
+<!-- 					            <processor>com.mysema.query.mongodb.morphia.MorphiaAnnotationProcessor</processor> -->
+								<processor>org.springframework.data.mongodb.repository.support.MongoAnnotationProcessor</processor>
+			            	</processors>		            
+			          	</configuration>
+			        </execution>			        
+		      </executions>		     
 		    </plugin>
 		</plugins>
 		
