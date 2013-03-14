@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html 	xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:th="http://www.thymeleaf.org"
-  		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+  		xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"  		
+		xmlns:dt="http://github.com/dandelion/datatables" 
   		layout:decorator="fragments/layout"	>
   
   <body>	
@@ -9,14 +10,14 @@
   			<h2>Owners:</h2>
   		</p>
         <div layout:fragment="page-content">     		
-			<table class="table table-striped">
+			<table id="ownerTable" class="table table-stripped" dt:table="true" dt:appear="fadein" dt:cdn="true" dt:info="false" dt:export="pdf" dt:theme="bootstrap2">
                 <thead>
                     <tr>
-					    <th style="width: 150px;">Name</th>
-					    <th style="width: 200px;">Address</th>
-					    <th>City</th>
-					    <th>Telephone</th>
-					    <th style="width: 100px;">Pets</th>
+					    <th >Name</th>
+					    <th >Address</th>
+					    <th >City</th>
+					    <th >Telephone</th>
+					    <th >Pets</th>
 				    </tr>
                 </thead>
                 <tbody>
@@ -24,7 +25,7 @@
                         <td>
                             <a th:href="@{'/owners/' + ${owner.id}}" href="show.html" 
                                th:text="${owner.firstName + ' ' + owner.lastName}"
-                               data-placement="top" 
+                               data-placement="left" 
 							   data-toggle="tooltip" 
 							   th:attr="data-original-title=${owner.firstName + ' ' + owner.lastName}" >Mary Smith</a>
                         </td>

@@ -53,11 +53,11 @@ import com.sun.syndication.feed.atom.Feed;
  * @author Arjen Poutsma 
  * @author Michael Isvy
  */
+@ContextConfiguration(locations = {"classpath:VisitsViewTest-config.xml"})
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 // Spring configuration files that are inside WEB-INF folder can be referenced here because they've been 
 // added to the classpath inside the Maven pom.xml file (inside <build> <testResources> ... </testResources> </build>)
-@ContextConfiguration({"classpath*:business-config.xml"})
 @ActiveProfiles("jdbc")
 public class VisitsAtomViewTest {
 

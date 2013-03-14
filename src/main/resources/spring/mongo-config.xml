@@ -39,8 +39,6 @@
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
 	  <constructor-arg name="mongoDbFactory" ref="mongoDbFactory"/>
 	</bean>
+	<mongo:repositories base-package="org.springframework.samples.petclinic.repository.mongo"/>
 	
-	<beans profile="mongo">
-		<mongo:repositories base-package="org.springframework.samples.petclinic.repository.mongo"/>
-	</beans>
 </beans>

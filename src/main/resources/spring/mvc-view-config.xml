@@ -71,6 +71,11 @@
 		      <bean class="nz.net.ultraq.web.thymeleaf.LayoutDialect"/>
 		    </set>
 		  </property>
+		  <property name="additionalDialects">
+	        <set>
+	            <bean class="com.github.dandelion.datatables.thymeleaf.dialect.DataTablesDialect" />
+	        </set>
+	      </property>
     </bean>
     <bean class="org.thymeleaf.spring3.view.ThymeleafViewResolver">
         <property name="templateEngine" ref="templateEngine" />
