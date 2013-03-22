@@ -26,38 +26,45 @@ import org.springframework.samples.petclinic.repository.OwnerRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * Using native JPA instead of Spring Data JPA here because of this query:
- * "SELECT owner FROM Owner owner left join fetch owner.pets WHERE owner.lastName LIKE :lastName"
- * See https://jira.springsource.org/browse/DATAJPA-292 for more details.
+ * Using native JPA instead of Spring Data JPA here because of this query: "SELECT owner FROM Owner owner left join
+ * fetch owner.pets WHERE owner.lastName LIKE :lastName" See https://jira.springsource.org/browse/DATAJPA-292 for more
+ * details.
+ * This issue has been fixed already in the latest Spring Data JPA Snapshot. So we will wait for the next version of Spring 
+ * Data JPA to be available and update the Spring Petclinic application consequently.
  *
  * @author Michael Isvy
  */
 @Repository
 public class JpaOwnerRepositoryImpl implements OwnerRepository {
 
-	@PersistenceContext
-	private EntityManager em;
-	
-	@SuppressWarnings("unchecked")
-	public Collection<Owner> findByLastName(String lastName) {
-		// using 'join fetch' because a single query should load both owners and pets
-		// using 'left join fetch' because it might happen that an owner does not have pets yet
-		Query query = this.em.createQuery("SELECT owner FROM Owner owner left join fetch owner.pets WHERE owner.lastName LIKE :lastName");
-		query.setParameter("lastName", lastName + "%");
-		return query.getResultList();
-	}
+    @PersistenceContext
+    private EntityManager em;
 
-	public Owner findById(int id) {
-		// using 'join fetch' because a single query should load both owners and pets
-		// using 'left join fetch' because it might happen that an owner does not have pets yet
-		Query query = this.em.createQuery("SELECT owner FROM Owner owner left join fetch owner.pets WHERE owner.id =:id");
-		query.setParameter("id", id);
-		return  (Owner) query.getSingleResult();
-	}
 
-	public void save(Owner owner) {
-		this.em.merge(owner);
+    @Override
+    @SuppressWarnings("unchecked")
+    public Collection<Owner> findByLastName(String lastName) {
+        // using 'join fetch' because a single query should load both owners and pets
+        // using 'left join fetch' because it might happen that an owner does not have pets yet
+        Query query = this.em.createQuery("SELECT DISTINCT owner FROM Owner owner left join fetch owner.pets WHERE owner.lastName LIKE :lastName");
+        query.setParameter("lastName", lastName + "%");
+        return query.getResultList();
+    }
 
-	}
+    @Override
+    public Owner findById(int id) {
+        // using 'join fetch' because a single query should load both owners and pets
+        // using 'left join fetch' because it might happen that an owner does not have pets yet
+        Query query = this.em.createQuery("SELECT owner FROM Owner owner left join fetch owner.pets WHERE owner.id =:id");
+        query.setParameter("id", id);
+        return (Owner) query.getSingleResult();
+    }
+
+
+    @Override
+    public void save(Owner owner) {
+        this.em.merge(owner);
+
+    }
 
 }

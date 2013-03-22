@@ -27,7 +27,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  * JPA implementation of the ClinicService interface using EntityManager.
- *
+ * <p/>
  * <p>The mappings are defined in "orm.xml" located in the META-INF directory.
  *
  * @author Mike Keith
@@ -39,21 +39,22 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class JpaVisitRepositoryImpl implements VisitRepository {
 
-	@PersistenceContext
-	private EntityManager em;
+    @PersistenceContext
+    private EntityManager em;
 
 
-	public void save(Visit visit) {
-		this.em.merge(visit);
-	}
+    @Override
+    public void save(Visit visit) {
+        this.em.merge(visit);
+    }
 
 
-	@Override
-	@SuppressWarnings("unchecked")
-	public List<Visit> findByPetId(Integer petId) { 
-		Query query = this.em.createQuery("SELECT visit FROM Visit v where v.pets.id= :id");
-		query.setParameter("id", petId);
-		return query.getResultList();
-	}
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<Visit> findByPetId(Integer petId) {
+        Query query = this.em.createQuery("SELECT visit FROM Visit v where v.pets.id= :id");
+        query.setParameter("id", petId);
+        return query.getResultList();
+    }
 
 }

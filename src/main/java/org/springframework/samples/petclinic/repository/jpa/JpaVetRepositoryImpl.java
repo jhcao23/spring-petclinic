@@ -26,8 +26,8 @@ import org.springframework.samples.petclinic.repository.VetRepository;
 import org.springframework.stereotype.Repository;
 
 /**
-* JPA implementation of the {@link VetRepository} interface.
-  *
+ * JPA implementation of the {@link VetRepository} interface.
+ *
  * @author Mike Keith
  * @author Rod Johnson
  * @author Sam Brannen
@@ -37,14 +37,15 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class JpaVetRepositoryImpl implements VetRepository {
 
-	@PersistenceContext
-	private EntityManager em;
+    @PersistenceContext
+    private EntityManager em;
 
 
-	@Cacheable(value="vets")
-	@SuppressWarnings("unchecked")
-	public Collection<Vet> findAll() {
-		return this.em.createQuery("SELECT vet FROM Vet vet join fetch vet.specialties ORDER BY vet.lastName, vet.firstName").getResultList();
-	}
+    @Override
+    @Cacheable(value = "vets")
+    @SuppressWarnings("unchecked")
+    public Collection<Vet> findAll() {
+        return this.em.createQuery("SELECT vet FROM Vet vet join fetch vet.specialties ORDER BY vet.lastName, vet.firstName").getResultList();
+    }
 
 }

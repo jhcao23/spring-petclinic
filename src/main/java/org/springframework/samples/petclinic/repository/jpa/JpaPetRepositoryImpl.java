@@ -37,20 +37,23 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class JpaPetRepositoryImpl implements PetRepository {
 
-	@PersistenceContext
-	private EntityManager em;
+    @PersistenceContext
+    private EntityManager em;
 
-	@SuppressWarnings("unchecked")
-	public List<PetType> findPetTypes() {
-		return this.em.createQuery("SELECT ptype FROM PetType ptype ORDER BY ptype.name").getResultList();
-	}
+    @Override
+    @SuppressWarnings("unchecked")
+    public List<PetType> findPetTypes() {
+        return this.em.createQuery("SELECT ptype FROM PetType ptype ORDER BY ptype.name").getResultList();
+    }
 
-	public Pet findById(int id) {
-		return this.em.find(Pet.class, id);
-	}
+    @Override
+    public Pet findById(int id) {
+        return this.em.find(Pet.class, id);
+    }
 
-	public void save(Pet pet) {
-		this.em.merge(pet);
-	}
+    @Override
+    public void save(Pet pet) {
+        this.em.merge(pet);
+    }
 
 }

@@ -5,15 +5,15 @@
 }
 
 .form-horizontal {
-  	width: 100%;
+    width: 100%;
 }
 
 input[type="text"] {
-	height: 25px;
+    height: 25px;
 }
 
 .navbar .nav > li > a {
-	color: #000000;
+    color: #000000;
 }
 
 .form-horizontal .control-label {
