@@ -19,13 +19,13 @@
 	-->
 	<context:component-scan
             base-package="org.springframework.samples.petclinic.service"/>
-            
+	
 	<!--
-		Instruct Spring to perform declarative transaction management
-		automatically on annotated classes.
-		
-		for mode="aspectj"/ see SPR-6392
+		Activates various annotations to be detected in bean classes: Spring's
+		@Required and @Autowired, as well as JSR 250's @PostConstruct,
+		@PreDestroy and @Resource (if available) and JPA's @PersistenceContext
+		and @PersistenceUnit (if available).
 	-->
-	<tx:annotation-driven />
+<!-- 	<context:annotation-config/>	 -->
 	
 </beans>
