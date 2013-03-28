@@ -24,8 +24,8 @@
 		<thymeleaf.layout.dialect.version>1.0.6</thymeleaf.layout.dialect.version>
 
     	<!--  Java EE / Java SE dependencies -->
-        <jsp.version>2.2</jsp.version>
-        <jstl.version>1.2</jstl.version>
+<!--         <jsp.version>2.2</jsp.version> -->
+<!--         <jstl.version>1.2</jstl.version> -->
 		<servlet.version>2.5</servlet.version>
         <javax-el.version>2.2</javax-el.version>
         <jaxb-api.version>2.2.7</jaxb-api.version>
@@ -62,7 +62,6 @@
 
 		<!-- Dates -->
         <jodatime-hibernate.version>1.3</jodatime-hibernate.version>
-        <jodatime-jsptags.version>1.1.1</jodatime-jsptags.version>
         <jodatime.version>2.2</jodatime.version>
         <jadira-usertype-core.version>3.1.0.CR1</jadira-usertype-core.version>
 
@@ -70,7 +69,7 @@
 		<!-- Web dependencies -->
         <webjars-bootstrap.version>2.3.1</webjars-bootstrap.version>
         <webjars-jquery-ui.version>1.9.2</webjars-jquery-ui.version>
-        <webjars-jquery.version>1.9.0</webjars-jquery.version>
+        <webjars-jquery.version>1.9.1</webjars-jquery.version>
         <dandelion.datatables.version>0.8.10</dandelion.datatables.version>
       
         <mysql.version>5.1.22</mysql.version>
@@ -82,29 +81,35 @@
                 <groupId>org.jadira.usertype</groupId>
                 <artifactId>usertype.core</artifactId>
                 <version>${jadira-usertype-core.version}</version>
+                <exclusions>
+                	<exclusion>
+                		<artifactId>hibernate-entitymanager</artifactId>
+                		<groupId>org.hibernate</groupId>
+                	</exclusion>
+                </exclusions>
             </dependency>
             <dependency>
                 <groupId>javax.validation</groupId>
                 <artifactId>validation-api</artifactId>
                 <version>${validation.version}</version>
             </dependency>
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>jstl</artifactId>
-                <version>${jstl.version}</version>
-            </dependency>
+<!--             <dependency> -->
+<!--                 <groupId>javax.servlet</groupId> -->
+<!--                 <artifactId>jstl</artifactId> -->
+<!--                 <version>${jstl.version}</version> -->
+<!--             </dependency> -->
             <dependency>
                 <groupId>javax.servlet</groupId>
                 <artifactId>servlet-api</artifactId>
                 <version>${servlet.version}</version>
                 <scope>provided</scope>
             </dependency>
-	         <dependency>
-	             <groupId>javax.servlet.jsp</groupId>
-	             <artifactId>jsp-api</artifactId>
-	             <version>${jsp.version}</version>
-	             <scope>provided</scope>
-	         </dependency>
+<!-- 	         <dependency> -->
+<!-- 	             <groupId>javax.servlet.jsp</groupId> -->
+<!-- 	             <artifactId>jsp-api</artifactId> -->
+<!-- 	             <version>${jsp.version}</version> -->
+<!-- 	             <scope>provided</scope> -->
+<!-- 	         </dependency> -->
             <dependency>
                 <groupId>javax.xml.bind</groupId>
                 <artifactId>jaxb-api</artifactId>
@@ -156,6 +161,10 @@
                     <exclusion>
                         <groupId>asm</groupId>
                         <artifactId>asm</artifactId>
+                    </exclusion>
+                    <exclusion>
+                    	<groupId>org.hibernate.javax.persistence</groupId>
+            			<artifactId>hibernate-jpa-2.0-api</artifactId>
                     </exclusion>
                 </exclusions>
 			</dependency>
@@ -323,11 +332,6 @@
                 <artifactId>joda-time-hibernate</artifactId>
                 <version>${jodatime-hibernate.version}</version>
             </dependency>
-            <dependency>
-                <groupId>joda-time</groupId>
-                <artifactId>joda-time-jsptags</artifactId>
-                <version>${jodatime-jsptags.version}</version>
-            </dependency>
 
             <!-- Databases - Uses HSQL by default -->
             <!-- <dependency>
@@ -341,16 +345,16 @@
                 <version>${hsqldb.version}</version>
                 <scope>runtime</scope>
             </dependency>
-            <dependency>
-                <groupId>javax.servlet.jsp.jstl</groupId>
-                <artifactId>jstl-api</artifactId>
-                <version>${jstl.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.glassfish.web</groupId>
-                <artifactId>jstl-impl</artifactId>
-                <version>${jstl.version}</version>
-            </dependency>
+<!--             <dependency> -->
+<!--                 <groupId>javax.servlet.jsp.jstl</groupId> -->
+<!--                 <artifactId>jstl-api</artifactId> -->
+<!--                 <version>${jstl.version}</version> -->
+<!--             </dependency> -->
+<!--             <dependency> -->
+<!--                 <groupId>org.glassfish.web</groupId> -->
+<!--                 <artifactId>jstl-impl</artifactId> -->
+<!--                 <version>${jstl.version}</version> -->
+<!--             </dependency> -->
             <dependency>
                 <groupId>javax.el</groupId>
                 <artifactId>el-api</artifactId>
@@ -376,12 +380,30 @@
                     <groupId>asm</groupId>
                     <artifactId>asm-attrs</artifactId>
                 </exclusion>
+                <exclusion>
+                   	<groupId>org.hibernate.javax.persistence</groupId>
+            		<artifactId>hibernate-jpa-2.0-api</artifactId>
+                </exclusion>
             </exclusions>
         </dependency>
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${hibernate.version}</version>
+            <exclusions>
+            	<exclusion>
+            		<groupId>org.hibernate</groupId>
+            		<artifactId>hibernate-core</artifactId>
+            	</exclusion>
+            	<exclusion>
+            		<groupId>org.hibernate.javax.persistence</groupId>
+            		<artifactId>hibernate-jpa-2.0-api</artifactId>
+            	</exclusion>
+            	<exclusion>
+            		<groupId>org.hibernate.common</groupId>
+    				<artifactId>hibernate-commons-annotations</artifactId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
@@ -397,6 +419,12 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-ehcache</artifactId>
             <version>${hibernate.version}</version>
+            <exclusions>
+            	<exclusion>
+            		<groupId>org.hibernate</groupId>
+            		<artifactId>hibernate-core</artifactId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>net.sf.ehcache</groupId>
