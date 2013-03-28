@@ -18,14 +18,6 @@
 		- POJOs labeled with the @Service annotations are auto-detected.
 	-->
 	<context:component-scan
-            base-package="org.springframework.samples.petclinic.service"/>
-	
-	<!--
-		Activates various annotations to be detected in bean classes: Spring's
-		@Required and @Autowired, as well as JSR 250's @PostConstruct,
-		@PreDestroy and @Resource (if available) and JPA's @PersistenceContext
-		and @PersistenceUnit (if available).
-	-->
-<!-- 	<context:annotation-config/>	 -->
+            base-package="org.springframework.samples.petclinic.service"/>	
 	
 </beans>
