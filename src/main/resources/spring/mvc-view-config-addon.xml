@@ -1,2 +1,0 @@
-<!-- Renders an Atom feed of the visits. Used by the BeanNameViewResolver  -->	 
-<bean id="visitList" class="org.springframework.samples.petclinic.web.VisitsAtomView"/>
