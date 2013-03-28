@@ -35,16 +35,6 @@
                     </td>
                 </tr>
             </table>
-<!--             <table class="table-buttons"> -->
-<!--                 <tr> -->
-<!--                     <td colspan="2" align="center"> -->
-<!--                         <a th:href="@{'/owners/' + ${owner.id} + '/edit'}" class="btn btn-info">Edit Owner</a> -->
-<!--                     </td> -->
-<!--                     <td> -->
-<!--                         <a th:href="@{'/owners/' + ${owner.id} + '/pets/new'}" class="btn btn-success">Add New Pet</a> -->
-<!--                     </td> -->
-<!--                 </tr> -->
-<!--             </table> -->
             
             <h2>Pets and Visits</h2>
             <div th:each="pet : ${owner.pets}" th:remove="tag">
@@ -79,15 +69,15 @@
                 <table class="table-buttons">
                     <tr>
                         <td>
-                            <a th:href="@{${owner.id} + '/pets/' + ${pet.id} + '/edit'}" href="../pets/form.html">Edit Pet</a>
+                            <a th:href="@{${owner.id} + '/pets/' + ${pet.id} + '/edit'}" href="../pets/form.html" class="btn btn-info">Edit Pet</a>
                         </td>
                         <td></td>
                         <td>
-                            <a th:href="@{${owner.id} + '/pets/' + ${pet.id} + '/visits/new'}" href="../pets/visitForm.html">Add Visit</a>
+                            <a th:href="@{${owner.id} + '/pets/' + ${pet.id} + '/visits/new'}" href="../pets/visitForm.html" class="btn btn-success">Add Visit</a>
                         </td>
                         <td></td>
                         <td>
-                            <a th:href="@{${owner.id} + '/pets/' + ${pet.id} + '/visits.atom'}" href="#" rel="alternate" type="application/atom+xml">Atom Feed</a>
+                            <a th:href="@{${owner.id} + '/pets/' + ${pet.id} + '/visits.atom'}" href="#" rel="alternate" type="application/atom+xml" class="btn btn-success">Atom Feed</a>
                         </td>
                     </tr>
                 </table>
