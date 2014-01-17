@@ -20,12 +20,12 @@
         <property name="cacheable" value="false" />
     </bean>
 
-    <bean id="templateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine">
+    <bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
           <property name="templateResolver" ref="templateResolver" />
           <!-- These lines configure the dialects to use with Thymeleaf -->
 		  <property name="dialects">
 		    <set>
-		      <bean class="org.thymeleaf.spring3.dialect.SpringStandardDialect"/>
+		      <bean class="org.thymeleaf.spring4.dialect.SpringStandardDialect"/>
 		      <bean class="nz.net.ultraq.thymeleaf.LayoutDialect"/>
 		    </set>
 		  </property>
@@ -51,7 +51,7 @@
                     <property name="order" value="1"/>
                 </bean>
                 
-                <bean class="org.thymeleaf.spring3.view.ThymeleafViewResolver">
+                <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
                     <property name="templateEngine" ref="templateEngine" />
                     <property name="order" value="2"/>
 <!--                     <property name="viewNames"  -->

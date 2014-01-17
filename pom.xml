@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 	<groupId>org.touchmars.solutions</groupId>
-	<artifactId>touch-mars-survey</artifactId>
+	<artifactId>touch-spring-petclinic-thymeleaf</artifactId>
 	<name>touch-mars-survey</name>
 	<packaging>war</packaging>
 	<version>1.0.0-SNAPSHOT</version>
@@ -11,42 +11,41 @@
     <properties>
     	    
         <!-- Generic properties -->
-        <java.version>1.6</java.version>
+        <java.version>1.7</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         
 		<!-- Spring -->
-        <spring-framework.version>3.2.3.RELEASE</spring-framework.version>
-       	<spring-data-jpa.version>1.3.2.RELEASE</spring-data-jpa.version>
-       	<spring-data-mongodb.version>1.2.1.RELEASE</spring-data-mongodb.version>
+        <spring-framework.version>4.0.0.RELEASE</spring-framework.version>
+       	<spring-data-jpa.version>1.4.3.RELEASE</spring-data-jpa.version>
+       	<spring-data-mongodb.version>1.3.3.RELEASE</spring-data-mongodb.version>
  		
  		<!-- John: Thymeleaf -->
- 		<thymeleaf.version>2.0.17</thymeleaf.version>
-		<thymeleaf.layout.dialect.version>1.1.1</thymeleaf.layout.dialect.version>
+ 		<thymeleaf.version>2.1.2.RELEASE</thymeleaf.version>
+		<thymeleaf.layout.dialect.version>1.2.1</thymeleaf.layout.dialect.version>
 
     	<!--  Java EE / Java SE dependencies -->
-		<servlet.version>2.5</servlet.version>
-<!--         <javax-el.version>2.2</javax-el.version> -->
-<!--         <jaxb-api.version>2.2.7</jaxb-api.version> -->
+<!-- 		<servlet.version>2.5</servlet.version> -->
+		<tomcat.servlet.version>7.0.30</tomcat.servlet.version>
         <jaxb-impl.version>2.2.7</jaxb-impl.version>
 		
 		<!-- Hibernate / JPA -->
-        <hibernate.version>4.1.9.Final</hibernate.version>
+        <hibernate.version>4.3.0.Final</hibernate.version>
         <hibernate-jpa.version>1.0.1.Final</hibernate-jpa.version>
-        <querydsl.version>3.2.0</querydsl.version>
+        <querydsl.version>3.3.0</querydsl.version>
         
         <!-- Bean validation -->
         <validation.version>1.0.0.GA</validation.version>
-        <hibernate-validator.version>4.3.1.Final</hibernate-validator.version>
+        <hibernate-validator.version>5.0.2.Final</hibernate-validator.version>
 		
 		<!-- Database access -->
-		<tomcat-jdbc.version>7.0.37</tomcat-jdbc.version>
+		<tomcat-jdbc.version>7.0.42</tomcat-jdbc.version>
 <!--         <commons-dbcp.version>1.4</commons-dbcp.version> -->
         <ehcache.version>2.6.6</ehcache.version>
-        <hsqldb.version>2.2.9</hsqldb.version>
+        <hsqldb.version>2.3.1</hsqldb.version>
 
  		<!-- AOP -->
-        <aspectj.version>1.7.2</aspectj.version>
+        <aspectj.version>1.7.4</aspectj.version>
  
 		<!-- Logging -->
         <logback.version>1.0.13</logback.version>
@@ -62,15 +61,15 @@
 
 		<!-- Dates -->
         <jodatime-hibernate.version>1.3</jodatime-hibernate.version>
-        <jodatime.version>2.2</jodatime.version>
-        <jadira-usertype-core.version>3.1.0.CR6</jadira-usertype-core.version>
+        <jodatime.version>2.3</jodatime.version>
+        <jadira-usertype-core.version>3.1.0.CR8</jadira-usertype-core.version>
 
 
 		<!-- Web dependencies -->
         <webjars-bootstrap.version>2.3.2</webjars-bootstrap.version>
-        <webjars-jquery-ui.version>1.9.2</webjars-jquery-ui.version>
-        <webjars-jquery.version>1.10.1</webjars-jquery.version>
-        <dandelion.datatables.version>0.8.14</dandelion.datatables.version>
+        <webjars-jquery-ui.version>1.10.3</webjars-jquery-ui.version>
+        <webjars-jquery.version>2.0.3-1</webjars-jquery.version>
+        <dandelion.datatables.version>0.9.3</dandelion.datatables.version>
       
         <mysql.version>5.1.22</mysql.version>
         
@@ -89,16 +88,22 @@
                 </exclusions>
             </dependency>
             <dependency>
-                <groupId>javax.validation</groupId>
-                <artifactId>validation-api</artifactId>
-                <version>${validation.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>servlet-api</artifactId>
-                <version>${servlet.version}</version>
+                <groupId>org.apache.tomcat</groupId>
+                <artifactId>tomcat-servlet-api</artifactId>
+                <version>${tomcat.servlet.version}</version>
                 <scope>provided</scope>
-            </dependency>
+        	</dependency>
+<!--             <dependency> -->
+<!--                 <groupId>javax.validation</groupId> -->
+<!--                 <artifactId>validation-api</artifactId> -->
+<!--                 <version>${validation.version}</version> -->
+<!--             </dependency> -->
+<!--             <dependency> -->
+<!--                 <groupId>javax.servlet</groupId> -->
+<!--                 <artifactId>servlet-api</artifactId> -->
+<!--                 <version>${servlet.version}</version> -->
+<!--                 <scope>provided</scope> -->
+<!--             </dependency> -->
 <!--             <dependency> -->
 <!--                 <groupId>javax.xml.bind</groupId> -->
 <!--                 <artifactId>jaxb-api</artifactId> -->
@@ -223,37 +228,17 @@
                 <version>${spring-framework.version}</version>
             </dependency>
             
-			<!-- John : Thymeleaf -->
+			<!-- John : Thymeleaf for Spring 4 -->
 			<dependency>
 		      	<groupId>org.thymeleaf</groupId>
 		      	<artifactId>thymeleaf</artifactId>
-		      	<version>${thymeleaf.version}</version>
-		      	<exclusions>
-		      		<exclusion>
-		      			<groupId>org.javassist</groupId>
-      					<artifactId>javassist</artifactId>
-		      		</exclusion>
-		      		<exclusion>
-		      			<groupId>org.slf4j</groupId>
-      					<artifactId>slf4j-api</artifactId>
-		      		</exclusion>
-		      	</exclusions>
+		      	<version>${thymeleaf.version}</version>		     
 		    </dependency>		    
 			<dependency>
 		      	<groupId>org.thymeleaf</groupId>
-		      	<artifactId>thymeleaf-spring3</artifactId>
+		      	<artifactId>thymeleaf-spring4</artifactId>
 		      	<version>${thymeleaf.version}</version>
-		      	<scope>compile</scope>
-		      	<exclusions>
-		      		<exclusion>
-		      			<groupId>org.thymeleaf</groupId>
-		      			<artifactId>thymeleaf</artifactId>
-		      		</exclusion>
-		      		<exclusion>
-		      			<groupId>org.slf4j</groupId>
-      					<artifactId>slf4j-api</artifactId>
-		      		</exclusion>
-		      	</exclusions>
+		      	<scope>compile</scope>		     
 		    </dependency> 
 		    <dependency>
 		    	<groupId>nz.net.ultraq.thymeleaf</groupId>
@@ -335,33 +320,12 @@
             </dependency>
 
             <!-- Databases - Uses HSQL by default -->
-            <!-- <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>${mysql.version}</version>
-            </dependency>  -->
             <dependency>
                 <groupId>org.hsqldb</groupId>
                 <artifactId>hsqldb</artifactId>
                 <version>${hsqldb.version}</version>
                 <scope>runtime</scope>
             </dependency>
-<!--             <dependency> -->
-<!--                 <groupId>javax.servlet.jsp.jstl</groupId> -->
-<!--                 <artifactId>jstl-api</artifactId> -->
-<!--                 <version>${jstl.version}</version> -->
-<!--             </dependency> -->
-<!--             <dependency> -->
-<!--                 <groupId>org.glassfish.web</groupId> -->
-<!--                 <artifactId>jstl-impl</artifactId> -->
-<!--                 <version>${jstl.version}</version> -->
-<!--             </dependency> -->
-<!--             <dependency> -->
-<!--                 <groupId>javax.el</groupId> -->
-<!--                 <artifactId>el-api</artifactId> -->
-<!--                 <version>${javax-el.version}</version> -->
-<!--                 <scope>provided</scope> -->
-<!--             </dependency> -->
 
         <!-- MySQL JDBC Connector -->
         <!-- 
@@ -371,7 +335,8 @@
             <version>${mysql.version}</version>
         </dependency>
         -->
-         <!-- HIBERNATE -->
+        
+        <!-- HIBERNATE 4 -->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
@@ -486,12 +451,6 @@
              <version>${hamcrest.version}</version>
              <scope>test</scope>
          </dependency>
-<!--          <dependency> -->
-<!--              <groupId>org.hamcrest</groupId> -->
-<!--              <artifactId>hamcrest-core</artifactId> -->
-<!--              <version>${hamcrest.version}</version> -->
-<!--              <scope>test</scope> -->
-<!--          </dependency> -->
        
         <dependency>
              <groupId>org.aspectj</groupId>
@@ -632,10 +591,11 @@
 		      </configuration>
 		    </plugin>
 		    <!-- John : add apt-maven-plugin -->
+		    <!-- https://github.com/mysema/apt-maven-plugin -->
 			<plugin>
 		      <groupId>com.mysema.maven</groupId>
 		      <artifactId>apt-maven-plugin</artifactId>
-		      <version>1.0.8</version>
+		      <version>1.1.1</version>
 		      <executions>
 			        <execution>
 			        	<phase>generate-sources</phase>
