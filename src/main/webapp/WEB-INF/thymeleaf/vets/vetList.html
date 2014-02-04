@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <html 	xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:th="http://www.thymeleaf.org"
-  		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  		xmlns:dt="http://github.com/dandelion/datatables" 
+  		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"  
   		layout:decorator="fragments/layout"	>
   
   <body>	
@@ -10,7 +9,7 @@
   			<h2>Veterinarians</h2>
   		</p>
         <div layout:fragment="page-content">     		
-			<table id="vetsTable" class="table table-stripped" dt:table="true" dt:appear="'fadein,1500'" dt:cdn="true" dt:info="false" dt:theme="bootstrap2">
+			<table id="vetsTable" class="table table-stripped">
                 <thead>
                     <tr>
                         <th>Name</th>

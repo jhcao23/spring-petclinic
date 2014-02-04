@@ -29,11 +29,11 @@
 		      <bean class="nz.net.ultraq.thymeleaf.LayoutDialect"/>
 		    </set>
 		  </property>
-		  <property name="additionalDialects">
-	        <set>
-	            <bean class="com.github.dandelion.datatables.thymeleaf.dialect.DataTablesDialect" />
-	        </set>
-	      </property>
+<!-- 		  <property name="additionalDialects"> -->
+<!-- 	        <set> -->
+<!-- 	            <bean class="com.github.dandelion.datatables.thymeleaf.dialect.DataTablesDialect" /> -->
+<!-- 	        </set> -->
+<!-- 	      </property> -->
     </bean>
 
 	<!--

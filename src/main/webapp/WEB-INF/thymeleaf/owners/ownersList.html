@@ -2,7 +2,6 @@
 <html 	xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:th="http://www.thymeleaf.org"
   		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"  		
-		xmlns:dt="http://github.com/dandelion/datatables" 
   		layout:decorator="fragments/layout"	>
   
   <body>	
@@ -10,7 +9,7 @@
   			<h2>Owners:</h2>
   		</p>
         <div layout:fragment="page-content">     		
-			<table id="ownerTable" class="table table-stripped" dt:table="true" dt:appear="'fadein,15000'" dt:cdn="true" dt:info="false" dt:export="pdf" dt:theme="bootstrap2">
+			<table id="ownerTable" class="table table-stripped">
                 <thead>
                     <tr>
 					    <th >Name</th>
